@@ -46,25 +46,67 @@ NAME: \line(1,0){380}
 
 \easysubproblem{Expand and simplify as much as you can: $\sum_{x \in \reals} \indic{x = 17}$.}\spc{0.5}
 
+\begin{align*}
+    \sum_{x \in \reals} \indic{x = 17} &= 1
+\end{align*}
+
 \easysubproblem{Expand and simplify as much as you can: $\sum_{x \in \reals} c \indic{x = 17}$ where $c \in \reals$ is a constant.}\spc{0.5}
+
+\begin{align*}
+    \sum_{x \in \reals} c \indic{x = 17} &= c 
+\end{align*}
 
 \easysubproblem{Expand and simplify as much as you can: $\sum_{x \in \reals} \indic{x \in \braces{1, 2, 3}}$.}\spc{0.5}
 
+\begin{align*}
+    \sum_{x \in \reals} \indic{x \in \braces{1, 2, 3}} &= 3
+\end{align*}
+
 \easysubproblem{Expand and simplify as much as you can: $\sum_{x \in \reals} x\indic{x \in \braces{1, 2, 3}}$.}\spc{0.5}
+
+\begin{align*}
+    \sum_{x \in \reals} x\indic{x \in \braces{1, 2, 3}} &= 1(1) + 2(1) + 3(1) + 4(0) + 5(0) + \ldots \\ &= 6 
+\end{align*}
+
 \easysubproblem{Expand and simplify as much as you can: $\sum_{x \in \naturals_0} x^{\indic{x \in \braces{1, 2, 3}}}$.}\spc{0.5}
+
+\begin{align*}
+    \sum_{x \in \naturals_0} x^{\indic{x \in \braces{1, 2, 3}}} &= 1^1 + 2^1 + 3^1 + 4^0 + \ldots \\ &= 6 + \infty \\ &= \infty
+\end{align*}
 
 \easysubproblem{Expand and simplify as much as you can: $\prod_{x \in \reals} \indic{x \in \braces{1, 2, 3}}$.}\spc{0.5}
 
+\begin{align*}
+    \prod_{x \in \reals} \indic{x \in \braces{1, 2, 3}} &= 1 * 1 * 1 * 0 * \dots \\ &= 0
+\end{align*}
+
+
 \easysubproblem{Expand and simplify as much as you can: $\sum_{x \in \reals} \indic{x \in \braces{1, 2, 3}}\indic{x \in \braces{4, 5, 6}}$.}\spc{0.5}
 
+\begin{align*}
+    \sum_{x \in \reals} \indic{x \in \braces{1, 2, 3}}\indic{x \in \braces{4, 5, 6}} &= (1)(0) + (1)(0) + (1)(0) + (0)(1) + (0)(1) + (0)(1) + \ldots \\ &= 0
+\end{align*} 
 
 \intermediatesubproblem{Expand and simplify as much as you can: $\sum_{x \in \reals} c \indic{x \in \braces{1, 2, \ldots, t}}$ where $c \in \reals$ is a constant and $t \in \naturals$ is a constant.}\spc{0.5}
 
+\begin{align*}
+    \sum_{x \in \reals} c \indic{x \in \braces{1, 2, \ldots, t}} &= c \sum_{i=0}^{t} i \\ &= tc 
+\end{align*}
+
 \intermediatesubproblem{Expand and simplify as much as you can: $\sum_{x \in \reals} t \indic{x \in \braces{1, 2, \ldots, t}}$ where $c \in \reals$ is a constant and $t \in \naturals$ is a constant.}\spc{0.5}
 
+\begin{align*}
+    \sum_{x \in \reals} t \indic{x \in \braces{1, 2, \ldots, t}} &= t \sum_{i=1}^{t} i \\ &= t^2
+\end{align*}
 \intermediatesubproblem{Expand and simplify as much as you can: $\sum_{x \in \reals} x \indic{x \in \braces{1, 2, \ldots, t}}$ where $c \in \reals$ is a constant and $t \in \naturals$ is a constant.}\spc{0.5}
 
+\begin{align*}
+    \sum_{x \in \reals} x \indic{x \in \braces{1, 2, \ldots, t}} &= \sum_{i = 1}^{t}i \\ &= \frac{(t-1)(t)}{2} 
+\end{align*}
+
 \intermediatesubproblem{Expand and simplify as much as you can: $\sum_{x \in \reals} \oneover{x!} \indic{x \in \naturals}$.}\spc{0.5}
+
+
 
 \intermediatesubproblem{Prove $\expe{\indic{X \in A}} = \prob{X \in A}$.}\spc{2}
 
