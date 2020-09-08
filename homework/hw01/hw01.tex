@@ -106,6 +106,9 @@ NAME: \line(1,0){380}
 
 \intermediatesubproblem{Expand and simplify as much as you can: $\sum_{x \in \reals} \oneover{x!} \indic{x \in \naturals}$.}\spc{0.5}
 
+\begin{align*}
+    \sum_{x \in \reals} \oneover{x!} \indic{x \in \naturals} &= \sum_{x \in \naturals} \oneover{x!} \\ &= \exp{1}
+\end{align*} 
 
 
 \intermediatesubproblem{Prove $\expe{\indic{X \in A}} = \prob{X \in A}$.}\spc{2}
@@ -120,9 +123,27 @@ NAME: \line(1,0){380}
 
 \easysubproblem{Is a JMF a type of PMF or PMF a type of JMF? Explain.}\spc{2}
 
+\begin{align*}
+    \text{A JMF is a type of PMF because a JMF is derived from 2 or more PMF's}
+\end{align*}
+
 \easysubproblem{Let $X_1, X_2 \iid \bernoulli{p}$. Find the PMF of the sum of $T = X_1 + X_2$ using the appropriate discrete convolution formula that would make the problem easiest.}\spc{4}
 
+\begin{align*}
+    \prob{t} &= \sum_{x \in \reals} {1 \choose x}p^x(1-p)^{1-x} {1 \choose t-x}p^{t-x}(1-p)^{1-t-x} \\
+    &= p^t(1-p)^{2-t} \sum_{i \in \reals} {1 \choose x}{1 \choose t-x} \\
+    &= p^t(1-p)^{2-t}\Big({1 \choose t}{1 \choose t-1}\Big) \\
+    &= {2 \choose t}p^{t}(1-p)^{2-t}
+\end{align*}
+
 \easysubproblem{Let $X_1 \sim \bernoulli{p_1}$ independent of $X_2 \sim \bernoulli{p_2}$. Find the JMF of for $X_1, X_2$. Denote it using a 2 $\times$ 2 grid or the piecewise function notation.}\spc{6}
+
+\begin{align*}
+    \begin{cases}
+        1 \withprob (p_1)(p_2) \\ 
+        0 \withprob (1-p_1)(1-p_2)
+    \end{cases}
+\end{align*}
 
 
 \hardsubproblem{Let 
@@ -144,11 +165,27 @@ Find the PMF of $T = X_1 + X_2$ using a convolution. Denote it using the piecewi
 
 \hardsubproblem{Prove the PMF of a binomial inductively using convolutions on the sequence of r.v.'s $\Xoneton \iid \bernoulli{p}$. You will need to use Pascal's Triangle combinatorial identity we employed in class.}\spc{11}
 
+\begin{align*}
+    \text{Let $T_n = X_1 + X_2 + \ldots + X_n$ and $T_n = X_n + T_{n-1}$} 
+\end{align*}
+
+\begin{align*}
+    \prob{t} &= \sum_{x \in \braces{0, 1}} p^x(1-p)^{1-x} {n-1 \choose t-x}p^{t-x}(1-p)^{n-1-t+x} \\
+    &= \sum_{x \in \braces{0, 1}} p^t(1-p)^{n-t}{n-1 \choose t-x} \\
+    &= p^t(1-p)^{n-t} \sum_{x \in \braces{0, 1}}{n-1 \choose t-x} \\ 
+    &= p^t(1-p)^{n-t} \Big( {n-1 \choose t} + {n-1 \choose t-1}\Big) \\ 
+    &= p^t(1-p)^{n-t} {n \choose t}
+\end{align*}
 
 \hardsubproblem{[MA] Prove the PMF of a negative binomial inductively using convolutions on the sequence of r.v.'s $\Xoneton \iid \geometric{p}$. You will need to use the \qu{hockey stick identity} \href{https://en.wikipedia.org/wiki/Hockey-stick_identity}{[click here]}.}\spc{11}
 
 \hardsubproblem{Let $X_1 \sim \binomial{n_1}{p}$ independent of $X_2 \sim \binomial{n_2}{p}$. Find the PMF of the sum of $T = X_1 + X_2$ using a convolution.}\spc{13}
 
+\begin{align*}
+    \prob{t} &= \sum_{x \in \reals} {n_1 \choose x}p^x(1-p)^{n_1-x}{n_2 \choose t-x}p^{t-x}(1-p)^{n_2-t+x}\indic{t-x \in \support{X_1}} \\ 
+    &= p^t(1-p)^{n_1+n_2-t}\sum_{x \in \braces{0, \ldots, t}}{n_1 \choose x}{n_2 \choose t-x} \\
+    &= p^t(1-p)^{n_1+n_2-t}{n_1 + n_2 \choose t}
+\end{align*}
 
 \easysubproblem{Prove the PMF of $X \sim \poisson{\lambda}$ using the limit as $n \rightarrow \infty$ and let $p = \overn{\lambda}$.}\spc{9}
 
