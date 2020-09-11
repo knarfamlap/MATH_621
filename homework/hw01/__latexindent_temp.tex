@@ -206,12 +206,7 @@ Find the PMF of $T = X_1 + X_2$ using a convolution. Denote it using the piecewi
 \hardsubproblem{Let $X_1 \sim \poisson{\lambda_1}$ independent of $X_2 \sim \poisson{\lambda_2}$. Find the PMF of the sum of $T = X_1 + X_2$ using a convolution.}\spc{12}
 
 \begin{align*}
-    \prob{t} &= \sum_{x_1 \in \braces{0, \ldots}} = \sum \frac{\exp{-\lambda_1}\lambda_{1}^{x_{1}}}{x_{1}!} \frac{\exp{-\lambda_2}\lambda_{2}^{t-x_1}}{(t-x_1)!}\indic{t-x \in \support{X_1}} \\
-    &= \sum_{x_1 \in \braces{0,\ldots,t}} \frac{\exp{-\lambda_1}\lambda_{1}^{x_{1}}}{x_{1}!} \frac{\exp{-\lambda_2}\lambda_{2}^{t-x_1}}{(t-x_1)!} \\
-    &= \sum_{x_1 \in \braces{0,\ldots,t}} \Big(\frac{1}{x_1!(t-x_1)!} \exp{-\lambda_1}\lambda_{1}^{x_{1}} \exp{-\lambda_2}\lambda_{2}^{t-x_1}\Big)\frac{t!}{t!} \\
-    &= \sum_{x_1 \in \braces{0,\ldots,t}} {t \choose x_1} \frac{\exp{-\lambda_1}\lambda_{1}^{x_{1}}\exp{-\lambda_2}\lambda_{2}^{t-x_1}}{t!} \\
-    &= \frac{\exp{-\lambda_{1} - \lambda_{2}}}{t!} \sum_{x_1 \in \braces{0,\ldots,t}} {t \choose x_1} \lambda_{1}^{x_1}\lambda_{2}^{t-x_1} \\
-    &= \frac{\exp{-\lambda_{1} - \lambda_{2}} (\lambda_2 + \lambda_1)^t}{t!}
+    \prob{t} = \sum_{x_1 \in \braces{0, \ldots}} = \sum \frac{\exp{-\lambda_1}\lambda_{1}^{x_{1}}}{x_{1}!} \frac{\exp{-\lambda_2}\lambda_{2}^{t-x_2}}{(t-x_1)!}
 \end{align*}
 
 
@@ -243,56 +238,23 @@ Find the PMF of $T = X_1 + X_2$ using a convolution. Denote it using the piecewi
 
 \easysubproblem{If $\X \sim \multinomial{n}{\p}$ where $\dime{\X} = k$, what is the parameter space for both $n$ and $\p$?}\spc{2}
 
-\begin{align*}
-    n \in \naturals, ~~ \p \in \braces{\vec{v}: \vec{v}\cdot{1}, v_1 \in (0, 1), \dots, v_k \in (0, 1)}
-\end{align*}
-
 \easysubproblem{If $\X \sim \multinomial{n}{\p}$ where $\dime{\X} = k$, what is the $\support{\X}$?}\spc{2}
-
-\begin{align*}
-    \support{\X} = \braces{\vec{x}: \vec{x}\cdot{1} = n, x_1 \in \braces{0, \ldots, n}, \ldots, x_k \in \braces{0, \ldots, n}}
-\end{align*}
 
 \easysubproblem{If $\X \sim \multinomial{n}{\p}$ where $\dime{\X} = k$, what is $\dime{\p}$?}\spc{-0.5}
 
-\begin{align*}
-    \dime{\p} = k
-\end{align*}
-
 \easysubproblem{If $\X \sim \multinomial{n}{\p}$ where $\dime{\X} = 2$, express $p_2$ as a function of $p_1$.}\spc{2}
-
-\begin{align*}
-    p_1 = 1 - p_2 
-\end{align*}
 
 \easysubproblem{If $\X \sim \multinomial{n}{\p}$ where $\dime{\X} = 2$, how are both $X_1$ and $X_2$ distributed?}\spc{1}
 
-\begin{align*}
-    X_1 \sim \binomial{n}{p_1}, ~~ X_2  \sim \binomial{n}{p_2}
-\end{align*}
-
 \easysubproblem{If $\X \sim \multinomial{n}{\p}$ and $n= 10$ and $\dime{\X} = 7$ as a column vector, give an example value of $\x$, a realization of the r.v. $\X$.}\spc{2}
-
-\begin{align*}
-    \x = [1, 1, 1, 1, 1, 2, 3]^T
-\end{align*}
 
 \easysubproblem{If $\X \sim \multinomial{9}{\bracks{0.1~0.2~0.7}^\top}$, find $\prob{\X = \bracks{3~2~4}^\top}$ to the nearest two decimal places.}\spc{2}
 
-\begin{align*}
-    \prob{X=[3, 2, 4]^T} &= {9 \choose 3, 2, 4} \cdot (0.1) \cdot (0.2) \cdot (0.7) \\
-    &= \frac{9!}{3!2!4!} \cdot (0.1) \cdot (0.2) \cdot (0.7)
-\end{align*}
+
 %\intermediatesubproblem{If $\X \sim \multinomial{n}{\p}$ and $n= 10$ and $\p = \bracks{0.2, 0.8}^\top$, find $\muvec := \expe{\X}$.}\spc{2}
 
 
 \hardsubproblem{[MA] If $\X_1 \sim \multinomial{n}{\p}$ and independently $\X_2 \sim \multinomial{n}{\p}$ where $\dime{\X_1} = \dime{\X_2} = k$. Find the JMF of $\T_2 = \X_1 + \X_2$ from the definition of convolution. This looks harder than it is! First, use the definition of convolution and factor out the terms that are not a function of $x_1, \ldots, x_K$. Finally, use Theorem 1 in this paper: \href{http://www.lrecits.usthb.dz/1.3.pdf}{[click here]} for the summation.}\spc{9}
-
-\begin{align*}
-    \prob{t_1,\ldots, t_k} &= \sum_{x_1, \ldots, x_n} {n \choose x_1, \ldots, x_k} \prod_{k=1}^{k} p_k^{x_k} {n \choose (t_1-x_1), \ldots, (t_k-x_k)} \prod_{k=1}^k p_k^{t_k-x_k} \\
-    &= \prod_{i=1}^k p_i^{t_i} \sum {n \choose x_1, \ldots, x_k} {n \choose (t_1-x_1),\ldots,(t_k-x_k)} \\ 
-    &= \prod_{i=1}^k p_i^{t_i} {2n \choose t_1, t_2, \dots, t_k}
-\end{align*}
 
 \end{enumerate}
 
