@@ -238,10 +238,31 @@ Find the PMF of $T = X_1 + X_2$ using a convolution. Denote it using the piecewi
 
 \hardsubproblem{Let $X \sim \geometric{p_x}$ independent of $Y \sim \geometric{p_y}$. Find $\prob{X > Y}$ using the method we did in class.}\spc{10}
 
+\begin{align*}
+    \prob{X > Y} &= \sum_{x \in \naturals_0} \sum_{y \in \naturals_0} (1-p_x)^x p_x (1-p_y) ^y p_y \indic{x>y} \\ 
+    &= p_xp_y \sum_{y \in \naturals_0} (1-p_y)^y  \sum_{x \in \naturals_0} (1-p_x)^x \indic{x>y} \\ 
+    &= p_xp_y \sum_{y \in \naturals_0} (1-p_y)^y \sum_{x \in \braces{y+1, \ldots}} (1-p_x)^x \\ 
+    &= p_xp_y \sum_{y \in \naturals_0} (1-p_y)^y \sum_{x\prime \in \naturals_0} (1-p_x)^{x\prime+y+1} \\
+    &= p_xp_y(1-p_x) \sum_{y \in \naturals_0} (1-p_y)^y \sum_{x\prime \in \naturals} (1-p_x)^{x\prime-1} \\
+    &= p_y(1-p_x) \sum_{y \in \naturals_0} (1-p_y)^y(1-p_x)^y \\ 
+    &= p_y(1-p_x) \sum_{y \in \naturals_0} [(1-p_y)(1-p_x)]^y \\ 
+    &= p_y(1-p_x) \sum_{y \in \naturals} [(1-p_y)(1-p_x)]^{y-1} \\ 
+    &= \frac{p_y - p_xp_y}{p_x + p_y + p_xp_y}  
+\end{align*}
 
 \easysubproblem{[MA] Prove this a different way by finding $\prob{X = Y}$ and then using the law of total probability.}\spc{10}
 
 \easysubproblem{[MA] As both $p_x$ and $p_y$ are reduced to zero, but $r = \frac{p_x}{p_y}$, what is the asymptotic probability you found in (a)?}\spc{10}
+
+Let $p_x = rp_y$ 
+
+\begin{align*}
+    \prob{X > Y} &= \frac{p_y - p_xp_y}{p_x + p_y + p_xp_y} \\ 
+    &= \frac{1-rp_y}{r+1-rp_y} \\ 
+    &= \lim_{p_y \to 0} \frac{1-rp_y}{r+1-rp_y} \\
+    &= \frac{1}{1+r} \\
+    &= \frac{p_x}{p_y + p_x}
+\end{align*}
 
 \hardsubproblem{Let $X \sim \poisson{\lambda}$ independent of $Y \sim \poisson{\lambda}$. Find an expression for $\prob{X > Y}$ \emph{as best as you are able to answer}. Part of this exercise is identifying where you cannot go any further.}\spc{9}
 
