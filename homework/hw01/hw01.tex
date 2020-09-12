@@ -113,6 +113,11 @@ NAME: \line(1,0){380}
 
 \intermediatesubproblem{Prove $\expe{\indic{X \in A}} = \prob{X \in A}$.}\spc{2}
 
+\begin{align*}
+    \expe{\indic{X \in A}} &= \prob{X \in A}  \\
+    \indic{X \in A} &= Deg(\indic{X \in A}) 
+\end{align*}
+
 
 \end{enumerate}
 
@@ -162,6 +167,14 @@ X_2 \sim \begin{cases}
 
 Find the PMF of $T = X_1 + X_2$ using a convolution. Denote it using the piecewise function notation.}\spc{6}
 
+\beqn
+T \sim \begin{cases}
+    7 \withprob 0.12 \\ 
+    10 \withprob 0.18 \\ 
+    11 \withprob 0.28 \\ 
+    14 \withprob  0.42
+\end{cases}
+\eeqn
 
 \hardsubproblem{Prove the PMF of a binomial inductively using convolutions on the sequence of r.v.'s $\Xoneton \iid \bernoulli{p}$. You will need to use Pascal's Triangle combinatorial identity we employed in class.}\spc{11}
 
@@ -187,7 +200,7 @@ Find the PMF of $T = X_1 + X_2$ using a convolution. Denote it using the piecewi
     \prob{t} &= \sum \prob{X_n}\prob{T_n - X_n} \\
     &= \sum_{x \in \braces{0, 1, \ldots}} (1-p)^{x} {(t-x)+n-2 \choose n-2}(1-p)^{t-x}p^{n-1}\indic{t-x\in \braces{0, 1, \ldots}} \\
     &= (1-p)^{t}p^{n} \sum_{x \in \braces{0, 1, \ldots}} {(t-x)+n-2 \choose n-2} \\
-    &= (1-p)^{t}p^{n}\sum{x=0}^{t} {t+n-x-2 \choose n-2} \\
+    &= (1-p)^{t}p^{n}\sum_{x=0}^{t} {t+n-x-2 \choose n-2} \\
     &= (1-p)^{t}p^{n} {t+n-1 \choose n-1}
 \end{align*}
 
@@ -251,6 +264,13 @@ Find the PMF of $T = X_1 + X_2$ using a convolution. Denote it using the piecewi
 \end{align*}
 
 \easysubproblem{[MA] Prove this a different way by finding $\prob{X = Y}$ and then using the law of total probability.}\spc{10}
+
+\begin{align*}
+    \prob{X=Y} &= \sum_{x \in\naturals_0} (1-p_x)^xp_x(1-p_y)^xp_y \\
+    &= p_xp_y \sum_{x \in\naturals_0} [(1-p_x)(1-p_y)]^x \\ 
+    &= p_xp_y \sum_{x \in\naturals}  [(1-p_x)(1-p_y)]^{x-1} \\ 
+    &= \frac{p_xp_y}{p_x+p_y+p_xp_y} 
+\end{align*}
 
 \easysubproblem{[MA] As both $p_x$ and $p_y$ are reduced to zero, but $r = \frac{p_x}{p_y}$, what is the asymptotic probability you found in (a)?}\spc{10}
 
