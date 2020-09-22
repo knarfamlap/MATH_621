@@ -162,15 +162,34 @@ without using the vector formulas.}\spc{9}
 
 \easysubproblem{Explain in English why $\B \sim \multinomial{1}{\p}$ is the multidimensional generalization of the Bernoulli r.v.}\spc{3}
 
+\begin{align*}
+   &\binomial{n}{p_i} \text{ is the number of successes after n trials with probability } p_i \\
+   &\text{Since n=1 then binomial converts to a bernoulli. For that reason we could express} \\
+   &\multinomial{1}{\p} \text{ as a row vector of bernoulli's}
+\end{align*}
+
 \easysubproblem{Explain in English why the following should be true. Remember how the sampling from the bag works.
 
 \beqn
 \binom{n}{x_1, x_2, \ldots, x_K} = \binom{n}{x_1} \binom{n - x_1}{x_2} \binom{n - (x_1 + x_2)}{x_3} \cdot \ldots \cdot \binom{n - (x_1 + x_2 + \ldots x_{K-1})}{x_K}
 \eeqn}\spc{2}
 
+\begin{align*}
+    &\text{Say you have n fruits in a bag. The fruits can be denoted as } x_1, x_2 \\
+    &\text{If we sample from the bag and get $x_1$ type fruit, } \\ 
+    &\text{then the bag has a remainder of $n-x_1$ when we sample again} \\
+    &\text{Additionally, this signifies that sampling is dependent on previous samples}  
+\end{align*}
+
 \intermediatesubproblem{Prove the combinatorial identity in (b).}\spc{3}
 
-
+\begin{align*}
+    \binom{n}{x_1, x_2, \ldots, x_K} &= \frac{n!}{x_1!(n-x_1)!} \cdot \ldots \cdot \frac{(n-x_1-\ldots-x_{K-1})!}{x_K!(n-x_1-\ldots-x_{K-1}-x_K)!} \\
+    \\
+    \text{Canceling terms yields to} \\ \\ 
+    \frac{n!}{x_1!\ldots x_K!} &= \frac{n!}{x_1!\ldots x_K! (n-x_1-\ldots-x_K)!} \\
+    &= \frac{n!}{x_1!\ldots x_K!}
+\end{align*}
 
 \easysubproblem{Consider the following bag of marbles.
 
@@ -181,6 +200,11 @@ without using the vector formulas.}\spc{9}
 
 Draw from replacement 37 times. What is the probability of getting 10 red, 17 green, 6 blue and 4 yellow? Compute explicitly to the nearest two significant digits.}\spc{7}
 
+\begin{align*}
+    \binom{37}{10, 17, 6, 4} (\frac{10}{37})^{10} (\frac{17}{37})^{17} (\frac{6}{37})^6 (\frac{4}{37})^4 = 0.01
+\end{align*}
+
+
 \hardsubproblem{[MA] If $\X \sim \multinomial{n}{\p}$, prove that its JMF sums to one, i.e. $\sum_{\x \in \support{\X}} p_{\X}(\x) = 1$.}\spc{7}
 
 \hardsubproblem{[MA] If $\X \sim \multinomial{n}{\p}$, prove that any marginal distribution is binomial with $n$ and $p_j$ as parameters i.e. 
@@ -190,6 +214,15 @@ p_{X_j}(x_j) = \binomial{n}{p_j}
 \eeqn
 
 We only assumed this in class because it makes sense conceptual given balls being sampled from an urn, but it was never explicitly proven.}\spc{9}
+
+\begin{align*}
+    &\text{Assume j = 1} \\ \\
+    \prob{X_1=x_1} &= \sum_{x_2,\ldots, x_n} (\frac{n!}{x_1!, \ldots, x_k!}) p_1^{x_1}\cdot \ldots \cdot p_K^{x_k} \\
+    &= \frac{n!}{x_1(n-x_1)!} p_1^{x_1} \sum_{x_2, \ldots, x_k} \binom{n-x_1}{x_2,\ldots x_k} p_2^{x_2}\cdot \ldots \cdot p_K^{x_k} \\
+    &= \frac{n!}{x_1(n-x_1)!} p_1^{x_1} (1-p_1)^{n-x_1} \\
+    &= \binomial{n}{p_1} \\
+    &= \binomial{n}{p_j}
+\end{align*}
 
 \extracreditsubproblem{[MA] If $\X \sim \multinomial{n}{\p}$, find the JMF of any subset of $X_1, \ldots, X_k$. Is it technically multinomial? This is not much harder than the previous problem if formulated carefully.}\spc{8}
 
