@@ -346,13 +346,27 @@ We know that X will be $\gammadist{k}{\lambda}$ since the indicator functions te
 
 \easysubproblem{If $\Xoneton \iid f(x)$ where its CDF is denoted $F(x)$, express the CDF of the maximum $X_i$ and express the CDF of the minimum $X_i$.}\spc{4}
 
+\begin{align*}
+    \text{max} &\leftarrow   1 - (1 - F(x))^n \\ \\ 
+    \text{min} &\leftarrow  F(x)^n
+\end{align*}
+
 \easysubproblem{If $\Xoneton \iid f(x)$ where its CDF is denoted $F(x)$, express the PDF of the maximum $X_i$ and express the PDF of the minimum $X_i$.}\spc{2}
 
+\begin{align*}
+    \text{max} &\leftarrow  nf(x)F(x)^{n-1}  \\ \\
+    \text{min} &\leftarrow  nf(x)(1-F(x))^{n-1}
+\end{align*}
 
 \easysubproblem{If $\Xoneton \iid f(x)$ where its CDF is denoted $F(x)$, express the PDF and the CDF of $X_{(k)}$ i.e. the $k$th smallest $X_i$.}\spc{5}
 
 \hardsubproblem{[MA] If discrete $\Xoneton \iid p(x)$, why would the formulas in (a-c) not be accurate?}\spc{3}
 
+\begin{align*}
+    f_{x_k}(x) &= \frac{n!}{(k-1)!(n-k)!} x^{k-1}(1-x)^{n-k} \indic{x \in [0, 1]} \\ \\ 
+    &= \frac{\Gammaf{n+1}}{\Gammaf{k}\Gammaf{n-k-1}} x^{k-1} (1-x)^{n+k+1-1} \indic{x \in [0, 1]}  \\ \\ 
+    &= \betanot{k}{n-k+1}
+\end{align*}
 
 %\intermediatesubproblem{If $\Xoneton \iid \exponential{\lambda}$, find the PDF and CDF of the maximum.}\spc{4}
 %
