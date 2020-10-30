@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 
 \include{preamble}
+\usepackage{mathtools}
 
 \newtoggle{professormode}
 % \toggletrue{professormode} %STUDENTS: DELETE or COMMENT this line
@@ -424,24 +425,99 @@ We know that X will be $\gammadist{k}{\lambda}$ since the indicator functions te
 
 \easysubproblem{State the formula for the PDF of $\Y$.}\spc{4}
 
+\begin{align*}
+    f_{\vec{y}}(h(\vec{y})) = f_{\vec{x}}(h(\vec{y}))\abss{J_n(\vec{y})}
+\end{align*}
 
 \intermediatesubproblem{Demonstrate that the formula for the PDF of $\Y$ reduces to the univariate change of variables formula if the dimensions of $\Y$ and $\X$ are 1. }\spc{4}
 
+Recall that:
+
+\begin{align*}
+    \Y &= [g_i(x_1, \ldots, x_n), \ldots, g_n(x_1, \ldots, x_n)]^T \\ 
+    \X &= [h_1(y_1,\ldots,y_n), \ldots, h_n(y_1, \ldots, y_n)]^T
+\end{align*}
+
+If the dimension of $\X$ and $\Y$are 1 then $n=1$ and
+
+\begin{align*}
+    y = g(x) \\
+    x = h(y) \\
+\end{align*}
+
+This simply becomes the univariate formula
+
+\begin{align*}
+    f_y(g^{-1}(y)) &= f_x(g^{-1}(y))\abss{\derivop{y}{g^{-1}(y)} }
+\end{align*}
 
 \easysubproblem{State the formula for the PDF of $R = \frac{X_1}{X_2}$.}\spc{2}
 
+\begin{align*}
+    f_{\vec{x}}(y_1, y_2)\abss{y_2} 
+\end{align*}
+
 \easysubproblem{State the formula for the PDF of $R = \frac{X_1}{X_2}$ if $X_1$ and $X_2$ are independent.}\spc{2}
+ 
+\begin{align*}
+    \int_{\reals} f_{x_1}^{old}(ru) \indic{ru \in \support{X_1}} f_{x_2}^{old}(u)\abss{u} du
+\end{align*}
 
 \easysubproblem{State the formula for the PDF of $R = \frac{X_1}{X_2}$ if $X_1$ and $X_2$ are independent and have positive supports.}\spc{3}
 
+\begin{align*}
+    \int_{0}^{\infty} f_{x_1}^{old}(ru) f_{x_2}^{old}(u)\abss{u} du
+\end{align*}
 
 \easysubproblem{State the formula for the PDF of $R = \frac{X_1}{X_1 + X_2}$.}\spc{1}
 
+\begin{align*}
+    \int f_{x_1}(ru)f_{x_2}(u-ru)\abss{u}du
+    % \int_{\reals} f_{x_1}^{old}(ru) \indic{ru \in \support{X_1}} f_{x_2}^{old}(u-ru)  \indic{u-ru \in \support{X_2}} \abss{u} du 
+\end{align*}
+
 \easysubproblem{State the formula for the PDF of $R = \frac{X_1}{X_1 + X_2}$ if $X_1$ and $X_2$ are independent.}\spc{1}
+
+\begin{align*}
+    \int_{\reals} f_{x_1}^{old}(ru) \indic{ru \in \support{X_1}} f_{x_2}^{old}(u-ru)  \indic{u-ru \in \support{X_2}} \abss{u} du 
+\end{align*}
 
 \intermediatesubproblem{State the formula for the PDF of $R = \frac{X_1}{X_1 + X_2}$ if $X_1$ and $X_2$ are independent and have positive supports. This should be a simpler expression than the previous.}\spc{2}
 
+\begin{align*}
+        \int_{0}^{\infty} f_{x_1}^{old}(ru) f_{x_2}^{old}(u - ru)\abss{u} du
+\end{align*}
+
 \hardsubproblem{Find a formula for the PDF of $E = X_1^{X_2}$ where $X_1, X_2 \iid f(x)$.}\spc{6}
+
+
+\begin{align*}
+    \begin{cases}
+        X_1 = Y_1^{\frac{1}{Y_2}} \\ 
+        X_2 = Y_2
+    \end{cases}
+    &\Leftrightarrow~
+    \begin{cases}
+        Y_1 = X_1^{X_2} \\
+        Y_2 = X_2
+    \end{cases} 
+\end{align*}
+
+\begin{align*}
+    \abss{J_n(\vec{y})} &= det{\begin{vmatrix}\frac{Y_1^{\frac{1-Y_2}{Y_2}}}{Y_2}&-\exp{\frac{\ln{(Y_1)}}{Y_2}} \frac{\ln{Y_2}}{Y_2^2}\\
+                      0&1\end{vmatrix}} =\abss{\frac{Y_1^{\frac{1-y_2}{y_2}}}{Y_2}}
+\end{align*}
+
+\begin{align*}
+    \int f_x(y_1, y_2) \abss{\frac{Y_1^{\frac{1-y_2}{y_2}}}{Y_2}} dY_2 
+\end{align*}
+
+Let $r = Y_1$ and $u = Y _2$, then we have
+
+\begin{align*}
+    \int_{\reals} f_x(r^{\frac{1}{u}}, u) \abss{\frac{r^{\frac{1-u}{u}}}{u}} du
+\end{align*} 
+
 
 
 \hardsubproblem{Find the simplest formula you can for the PDF of $Q = \frac{X_1}{X_2}e^{X_3}$ where $X_1, X_2, X_3$ are dependent r.v.'s.}\spc{10}

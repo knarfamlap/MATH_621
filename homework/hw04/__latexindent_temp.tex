@@ -311,13 +311,20 @@ $g(x)$ is not monotonic but it does not matter since the $Supp[X] = \{0, n\}$
 \easysubproblem{Find the kernel of the beta PDF.}\spc{2}
 
 \begin{align*}
-    P(X=x) &= \frac{\Gammaf{\alpha + \beta}}{\Gammaf{\alpha}\Gammaf{\beta}}
+    P(X=x) &= \frac{\Gammaf{\alpha + \beta}}{\Gammaf{\alpha}\Gammaf{\beta}} x^{\alpha-1} (1-x)^{\beta-1} \indic{x \in [0, 1]} \\ \\
+    &\propto x^{\alpha-1} (1-x)^{\beta-1} \indic{x \in [0, 1]} 
 \end{align*}
 
 %\easysubproblem{Find the kernel of the beta binomial PMF.}\spc{3}
 
 \easysubproblem{If $k(x) = e^{-\lambda x} x^{k-1} \indic{x > 0}$ how would you know if the r.v. $X$ was an $\erlang{k}{\lambda}$ or a $\gammadist{k}{\lambda}$?}\spc{2}
 
+We know that X will be $\gammadist{k}{\lambda}$ since the indicator functions tell us about their supports. We know that:
+
+\begin{align*}
+    \erlang{k}{\lambda} \rightarrow \support{X} = [0, \infty) \\ \\
+    \gammadist{k}{\lambda} \rightarrow \support{X} = (0, \infty)
+\end{align*}
 
 \intermediatesubproblem{If $k(x) = xe^{-x^2} \indic{x > 0}$, how is $X$ distributed?}\spc{2}
 
@@ -417,20 +424,61 @@ $g(x)$ is not monotonic but it does not matter since the $Supp[X] = \{0, n\}$
 
 \easysubproblem{State the formula for the PDF of $\Y$.}\spc{4}
 
+\begin{align*}
+    f_{\vec{y}}(h(\vec{y})) = f_{\vec{x}}(h(\vec{y}))\abss{J_n(\vec{y})}
+\end{align*}
 
 \intermediatesubproblem{Demonstrate that the formula for the PDF of $\Y$ reduces to the univariate change of variables formula if the dimensions of $\Y$ and $\X$ are 1. }\spc{4}
 
+Recall that:
+
+\begin{align*}
+    \Y &= [g_i(x_1, \ldots, x_n), \ldots, g_n(x_1, \ldots, x_n)]^T \\ 
+    \X &= [h_1(y_1,\ldots,y_n), \ldots, h_n(y_1, \ldots, y_n)]^T
+\end{align*}
+
+If the dimension of $\X$ and $\Y$are 1 then $n=1$ and
+
+\begin{align*}
+    y = g(x) \\
+    x = h(y) \\
+\end{align*}
+
+This simply becomes the univariate formula
+
+\begin{align*}
+    f_y(g^{-1}(y)) &= f_x(g^{-1}(y))\abss{\derivop{y}{g^{-1}(y)} }
+\end{align*}
 
 \easysubproblem{State the formula for the PDF of $R = \frac{X_1}{X_2}$.}\spc{2}
 
+\begin{align*}
+    f_{\vec{x}}(y_1, y_2)\abss{y_2} 
+\end{align*}
+
 \easysubproblem{State the formula for the PDF of $R = \frac{X_1}{X_2}$ if $X_1$ and $X_2$ are independent.}\spc{2}
+ 
+\begin{align*}
+    \int_{\reals} f_{x_1}^{old}(ru) \indic{ru \in \support{X_1}} f_{x_2}^{old}(u)\abss{u} du
+\end{align*}
 
 \easysubproblem{State the formula for the PDF of $R = \frac{X_1}{X_2}$ if $X_1$ and $X_2$ are independent and have positive supports.}\spc{3}
 
+\begin{align*}
+    \int_{0}^{\infty} f_{x_1}^{old}(ru) f_{x_2}^{old}(u)\abss{u} du
+\end{align*}
 
 \easysubproblem{State the formula for the PDF of $R = \frac{X_1}{X_1 + X_2}$.}\spc{1}
 
+\begin{align*}
+    \int_{\reals} f_{x_1}^{old}(ru) \indic{ru \in \support{X_1}} f_{x_2}^{old}(u-ru) \indic{u-ru \in \support{X_2}} abss{u} du 
+\end{align*}
+
 \easysubproblem{State the formula for the PDF of $R = \frac{X_1}{X_1 + X_2}$ if $X_1$ and $X_2$ are independent.}\spc{1}
+
+\begin{align*}
+    \int_{0}^{\infty} f_{x_1}^{old}(ru) f_{x_2}^{old}(u - ru)\abss{u} du
+\end{align*}
 
 \intermediatesubproblem{State the formula for the PDF of $R = \frac{X_1}{X_1 + X_2}$ if $X_1$ and $X_2$ are independent and have positive supports. This should be a simpler expression than the previous.}\spc{2}
 
@@ -440,6 +488,13 @@ $g(x)$ is not monotonic but it does not matter since the $Supp[X] = \{0, n\}$
 \hardsubproblem{Find the simplest formula you can for the PDF of $Q = \frac{X_1}{X_2}e^{X_3}$ where $X_1, X_2, X_3$ are dependent r.v.'s.}\spc{10}
 
 \hardsubproblem{Show that $R = \frac{X_1}{X_2} \sim \beta'(\alpha, \beta)$, the beta prime distribution, if $X_1 \sim \gammadist{\alpha}{1}$ independent of $X_2 \sim \gammadist{\beta}{1}$.}\spc{12}
+
+\begin{align*}
+    f_R(r) &= \int_0^\infty \frac{1^\alpha}{\Gammaf{\alpha}} (ru)^{\alpha-1} \exp{-ru} \indic{ru \in [0, \infty]} \frac{(1)^\beta u^{\beta-1}}{\Gammaf{\beta}}\exp{-u} \abss{u} du \\ \\
+    &= \frac{1^{\alpha + \beta}}{\Gammaf{\alpha}} r^{\alpha-1}  \indic{r > 0} \int_0^\infty u^{\alpha + \beta - 1} \exp{r+1+u} du  \\ \\ 
+    &= \frac{r^{\alpha - 1}}{B(\alpha, \beta) (r+1)^{\alpha + \beta}} \\ \\ 
+    &= \text{BetaPrime}(\alpha, \beta)
+\end{align*}
 
 \end{enumerate}
 
