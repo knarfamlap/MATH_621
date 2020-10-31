@@ -241,13 +241,35 @@ $g(x)$ is not monotonic but it does not matter since the $Supp[X] = \{0, n\}$
 
 \intermediatesubproblem{Let $X \sim \exponential{1}$ and $Y = -\natlog{X} \sim \text{Gumbel}(0,1)$. Find the PDF of this standard Gumbel distribution. Make sure you include the indicator function throughout your proof.}\spc{8}
 
+\begin{align*}
+    g(x) = -\ln{(X)} ~&\Leftrightarrow~ g^{-1}(y) = \exp{-Y} \\ \\ 
+    \abss{\derivop{y}{g^{-1}(y)}}  &= \abss{-\exp{-Y}} \\ \\ 
+    f_x(g^{-1}(y))\abss{\derivop{y}{g^{-1}(y)}} &= \exp{-\exp{-y} - y}
+\end{align*}
+
+
 \easysubproblem{Find the CDF of $Y$.}\spc{4}
 
+\begin{align*}
+    \int \exp{-\exp{-x} - x} dx = \exp{-\exp{-x}}
+\end{align*}
+
 \easysubproblem{Let $G = \beta Y + \mu \sim \text{Gumbel}(\mu, \beta)$. Find the PDF of $G$, the general Gumbel distribution.}\spc{4}
+
+\begin{align*}
+    g(x) = \beta Y + \mu ~&\Leftrightarrow~ g^{-1}(y) = \frac{x-\mu}{\beta} \\ \\ 
+    \abss{\derivop{y}{g^{-1}(y)}} &= \frac{1}{\beta} \\ \\ 
+    f_x(g^{-1}(y))\abss{\derivop{y}{g^{-1}(y)}} &= \frac{1}{\beta}\exp{-(\frac{x - \mu}{\beta})} 
+\end{align*}
 
 \easysubproblem{[MA] Show that for any r.v. $X$, if $Y = aX + b$, then $F_Y(y) = F_X\parens{\frac{y - b}{a}}$.}\spc{2}
 
 \easysubproblem{Using the answer in the previous question, find the CDF of $G \sim \text{Gumbel}(\mu, \beta)$.}\spc{4}
+
+\begin{align*}
+    \int \frac{1}{\beta}\exp{-(\frac{x - \mu}{\beta})} dx &=  \exp{-(\frac{x - \mu}{\beta})}
+\end{align*}
+\
 
 \end{enumerate}
 
