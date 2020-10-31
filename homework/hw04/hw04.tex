@@ -279,7 +279,19 @@ $g(x)$ is not monotonic but it does not matter since the $Supp[X] = \{0, n\}$
 
 \easysubproblem{If $X \sim \exponential{1}$ then show that $Y = \oneover{\lambda} X^{\oneover{k}} \sim \text{Weibull}\parens{k,\lambda}$ where $k, \lambda > 0$.}\spc{2}
 
+\begin{align*}
+    g(x) = \frac{1}{\lambda} x^{\frac{1}{k}} ~&\Leftrightarrow~ g^{-1}(y) = \lambda^ky^k \\ \\ 
+    \abss{\derivop{y}{g^{-1}(y)}} &= k\lambda^ky^{k-1} \\ \\ 
+    f_x(g^{-1}(y)) \abss{\derivop{y}{g^{-1}(y)}} &= k\lambda (\lambda y)^{k-1}\exp{-(\lambda^ky^k)} \\ \\ 
+    &\sim  \text{Weibull}\parens{k,\lambda}
+\end{align*}
+
 \intermediatesubproblem{Find $\text{Med}\bracks{Y}$.}\spc{8}
+
+\begin{align*}
+    \frac{1}{2} &= 1 - \exp{-\Big(\frac{x}{\lambda}\Big)^k} \\ \\ 
+    \text{Med}\bracks{Y} &= \lambda\ln(2)^{\frac{1}{k}} 
+\end{align*}
 
 %\easysubproblem{The parameter $k$ is called the \qu{Weibull modulus} and it is very important in modeling. The three classes of Weibull models are when $k < 1, k = 1, k > 1$. Write a probability statement about each of these cases. Give one example of what each of these cases can potentially model in the real world.}\spc{5}
 
@@ -351,6 +363,11 @@ We know that X will be $\gammadist{k}{\lambda}$ since the indicator functions te
 
 \intermediatesubproblem{If $k(x) = xe^{-x^2} \indic{x > 0}$, how is $X$ distributed?}\spc{2}
 
+$X \sim \text{Weibull}(2, 1)$
+\begin{align*}
+    c &= \Big(\int_{-\infty}^{\infty} f(x) dx \Big)^{- 1} \\ \\ 
+    &= 2 \\ \\
+\end{align*}
 
 %\hardsubproblem{If the kernel without the indicator function is $x^{-d}$ where $d>1$, how is $X$ distributed?}\spc{5}
 
