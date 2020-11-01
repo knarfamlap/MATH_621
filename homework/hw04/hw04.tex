@@ -297,11 +297,31 @@ $g(x)$ is not monotonic but it does not matter since the $Supp[X] = \{0, n\}$
 
 \hardsubproblem{[MA] Prove that if $k > 1$ then $\cprob{Y \geq y + c}{Y \geq c} < \prob{Y \geq y}$ for $c > 0$.}\spc{7}
 
+\begin{align*}
+    \frac{P(Y \geq y + c ~\cap~ Y \geq c )}{P(Y \geq c)} &= \exp{\Big(-\lambda^2(y+c)(c)\Big)^k} \Big(\frac{y+c}{c}\Big)^{k+1} \\ \\ 
+    P(Y \geq y) &= k\lambda (\lambda y)^{k-1}\exp{-(\lambda y)^k} \\ \\ 
+    \exp{\Big(-\lambda^2(y+c)(c)\Big)^k} \Big(\frac{y+c}{c}\Big)^{k+1} &< k\lambda (\lambda y)^{k-1}\exp{-(\lambda y)^k}
+\end{align*}
+
 \hardsubproblem{If $X \sim \exponential{\lambda}$ then show that $Y = X^\beta \sim \text{Weibull}$ where $\beta > 0$. Find the resulting Weibull's parameters in terms of the parameterization we learned in class (i.e. your answer in part a).}\spc{5}
+
+\begin{align*}
+    g(x) = X^{\beta} \Leftrightarrow~ &g^{-1}(y) = y^{\frac{1}{\beta}} \\ \\ 
+    \abss{\derivop{y}{g^{-1}(y)}} =~ &\frac{1}{\beta} y^{\frac{1}{\beta} - 1} \\ \\ 
+    f_x(g^{-1}(y)) \abss{\derivop{y}{g^{-1}(y)}} =~ &\lambda\exp{\lambda(y^{\frac{1}{\beta}})} \frac{1}{\beta} y^{\frac{1}{\beta} - 1} = \frac{\lambda}{\beta} y^{\frac{1}{\beta} - 1}  \exp{\lambda(y^{\frac{1}{\beta}})}
+\end{align*}
+
+Let $k = \frac{1}{\beta}$
+
+\begin{align*}
+    f_x(g^{-1}(y)) \abss{\derivop{y}{g^{-1}(y)}} =~ &k\lambda y^{k-1} \exp{-\lambda(y^{k})}   
+\end{align*}
 
 \easysubproblem{Using $Y$, the Weibull in terms of the parameterization we learned in class (i.e. your answer in part a), find the PDF of $W = Y + c \sim \text{Weibull}\parens{k, \lambda, c}$ which is known as the \qu{translated Weibull} or \qu{3-parameter Weibull model}.}\spc{6}
 
-
+\begin{align*}
+    k\lambda (\lambda (y+c))^{k-1}\exp{-(\lambda^k(y+c)^k)}
+\end{align*}
 %\easysubproblem{Find the PDF of $R = -W$ which is known as the \qu{reverse Weibull}.}\spc{5}
 %
 %
@@ -399,19 +419,28 @@ $X \sim \text{Weibull}(2, 1)$
 
 \easysubproblem{If $\Xoneton \iid f(x)$ where its CDF is denoted $F(x)$, express the PDF and the CDF of $X_{(k)}$ i.e. the $k$th smallest $X_i$.}\spc{5}
 
+\begin{align*}
+    f_x(x) &= \frac{n!}{(k-1)!(n-k)!} f(x)F(x)^{k-1}(1 - F(x))^{n-k} \\ \\ 
+    F_x(x) &= \sum_{j=k}^n {n \choose j}  F(x)^j(1-F(x))^{n-j}
+\end{align*}
+
 \hardsubproblem{[MA] If discrete $\Xoneton \iid p(x)$, why would the formulas in (a-c) not be accurate?}\spc{3}
 
-\begin{align*}
-    f_{x_k}(x) &= \frac{n!}{(k-1)!(n-k)!} x^{k-1}(1-x)^{n-k} \indic{x \in [0, 1]} \\ \\ 
-    &= \frac{\Gammaf{n+1}}{\Gammaf{k}\Gammaf{n-k-1}} x^{k-1} (1-x)^{n+k+1-1} \indic{x \in [0, 1]}  \\ \\ 
-    &= \betanot{k}{n-k+1}
-\end{align*}
+The formulas above strictly assume that random vaariables are continous. Applying these formulas to the descrete case
+would not be accurate because in the continous case we assign mass to a region. In the discrete case, we assign mass to 
+single point. 
 
 %\intermediatesubproblem{If $\Xoneton \iid \exponential{\lambda}$, find the PDF and CDF of the maximum.}\spc{4}
 %
 %\intermediatesubproblem{If $\Xoneton \iid \exponential{\lambda}$, find the PDF and CDF of the minimum.}\spc{4}
 
 \intermediatesubproblem{If $\Xoneton \iid \stduniform$, show that $X_{(k)} \sim \betanot{k}{n-k+1}$.}\spc{6}
+
+\begin{align*}
+    f_{x_k}(x) &= \frac{n!}{(k-1)!(n-k)!} x^{k-1}(1-x)^{n-k} \indic{x \in [0, 1]} \\ \\ 
+    &= \frac{\Gammaf{n+1}}{\Gammaf{k}\Gammaf{n-k-1}} x^{k-1} (1-x)^{n+k+1-1} \indic{x \in [0, 1]}  \\ \\ 
+    &= \betanot{k}{n-k+1}
+\end{align*}
 
 \intermediatesubproblem{Express $\binom{n}{k}$ in terms of the beta function.}\spc{5}
 
