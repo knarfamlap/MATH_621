@@ -249,9 +249,34 @@ $g(x)$ is not monotonic but it does not matter since the $Supp[X] = \{0, n\}$
 
 \intermediatesubproblem{Let $X \sim \exponential{\lambda}$. Find the PDF of $Y = g(X) = ke^X$ where $k>0$. This will be a brand name r.v., so mark it so and include its parameter values.}\spc{6}
 
+\begin{align*}
+    g(x) = ke^{X}  &\Leftrightarrow  g^{-1}(y) =  \ln(\frac{y}{k})\\ \\
+    \abss{\derivop{y}{g^{-1}(y)}} &= \frac{1}{y} \\ \\ 
+    f_x(g^{-1}(y)) \abss{\derivop{y}{g^{-1}(y)}} &= \lambda \exp{\lambda (\ln(\frac{y}{k}))} \frac{1}{y} \\ \\ 
+    &= \frac{\lambda}{y} (\frac{y}{k})^{-\lambda} \\ \\ 
+    &\sim \text{ParetoI}(k, \lambda)
+\end{align*}
+
 \easysubproblem{Rederive the $X \sim \text{Laplace}(0, 1)$ r.v. model by taking the difference of two standard exponential r.v.'s.}\spc{8}
 
+\begin{align*}
+    f_D(d) &= \int_{\support{X_1}} f(x)^{old} f_t^{old}(d-x) \indic{d-x \in \support{X}} \\ \\ 
+    &= \int_0^\infty \exp{-x} \exp{d-x} \indic{x \in [d, \infty]} \\ \\ 
+    &= \exp{d} 
+    \begin{cases}
+        \int_d^\infty \exp{-2x} dx ~~d \geq 0 \\ \\ 
+        \int_0^\infty \exp{-2x} dx ~~d < 0
+    \end{cases} \\ \\ 
+    &= \frac{1}{2} \exp{-\abss{d}} \\ \\ 
+    &\sim \text{Laplace}(0, 1)
+\end{align*}
+
 \easysubproblem{Let $X \sim \text{Laplace}(0, 1)$. Prove that $\expe{X} = 0$ without using the integral definition. There's a trick.}\spc{3}
+
+Since $X_1, X_2 \iid \exponential{\lambda}$
+\begin{align*}
+    \expe{X_1 - X_2} = \expe{X_1} - \expe{X_2} = 0
+\end{align*}
 
 \easysubproblem{Find the PDF of $Y = \sigma X + \mu \sim \text{Laplace}(\mu, \sigma)$ where $X \sim \text{Laplace}(0, 1)$.}\spc{3}
 
