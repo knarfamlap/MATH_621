@@ -280,9 +280,29 @@ Since $X_1, X_2 \iid \exponential{\lambda}$
 
 \easysubproblem{Find the PDF of $Y = \sigma X + \mu \sim \text{Laplace}(\mu, \sigma)$ where $X \sim \text{Laplace}(0, 1)$.}\spc{3}
 
+\begin{align*}
+    f(\sigma x + \mu) = \frac{1}{2} \exp{-\abss{\frac{y - \mu}{\sigma}}} 
+\end{align*}
+
 \hardsubproblem{Show that $\mathcal{E} \sim \text{Laplace}(0, \sigma)$ is a reasonable error distribution.}\spc{4}
 
+
 \intermediatesubproblem{[MA] Find the Quantile function of $X$ where $X \sim \text{Laplace}(0, 1)$.}\spc{4}
+
+\begin{align*}
+    \begin{cases}
+        \frac{1}{2} \exp{x} ~~ x \leq \mu \\ \\ 
+        1 - \frac{1}{2} \exp{-x} ~~ x \geq \mu 
+    \end{cases} &=
+    \begin{cases}
+        q = \frac{1}{2} \exp{x}  ~~ q \leq \frac{1}{2}\\ \\ 
+        1 = 1 - \frac{1}{2} \exp{-x}   q \geq \frac{1}{2} 
+    \end{cases} \\ \\ 
+   Q[X, q] &= \begin{cases}
+        \ln(2q) = x ~~ q \leq \frac{1}{2}\\ \\
+        \ln(-2q + 2) = x q \geq \frac{1}{2}
+    \end{cases}
+\end{align*}
 
 %\intermediatesubproblem{[MA] Prove that $X \sim \text{ParetoI}(1, log_4(5))$ models the \qu{Pareto Principle}.}\spc{10}
 
