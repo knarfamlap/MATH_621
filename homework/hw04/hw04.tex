@@ -196,16 +196,54 @@ $g(x)$ is not monotonic but it does not matter since the $Supp[X] = \{0, n\}$
 
 \intermediatesubproblem{Let $X \sim \stduniform$. Find the PDF of $Y = g(X) = aX + c$. Make sure you're careful with the indicator function that specifies the support. There are two cases.}\spc{3}
 
+\begin{align*}
+    g(x) = aX + c &\Leftrightarrow  g^{-1}(y) = \frac{y - c}{a} \\ \\ 
+    \abss{\derivop{y}{g^{-1}(y)}} &= \abss{\frac{1}{a}} \\ \\ 
+    f_x(g^{-1}(y)) \abss{\derivop{y}{g^{-1}(y)}} &= \frac{y-c}{a^2} \\ \\ 
+    &= \begin{cases}
+        \frac{y-c}{a^2} ~~ a > 0 \\ 
+        \frac{y-c}{\abss{-a^2}} ~~ a < 0
+    \end{cases}
+\end{align*}
+
 \intermediatesubproblem{Let $X \sim \exponential{\lambda}$. Find the PDF of $Y = g(X) = \natlog{X}$.}\spc{3}
+
+\begin{align*}
+    g(x) = \ln(x) &\Leftrightarrow  g^{-1}(y) = \exp{y} \\ \\ 
+    \abss{\derivop{y}{g^{-1}(y)}} &= \abss{\exp{y}} \\ \\  
+    f_x(g^{-1}(y)) \abss{\derivop{y}{g^{-1}(y)}} &= \exponentialpdf{\exp{y}}{\lambda} \exp{y}\\ \\
+\end{align*}
 
 \extracreditsubproblem{Let $X \sim \exponential{\lambda}$. Find the PDF of $Y = g(X) = \sin{X}$.}\spc{3}
 
 \intermediatesubproblem{Let $X \sim \stduniform$. Find the PDF of $Y = g(X) = \natlog{\frac{X}{1 - X}}$. If this is a brand name r.v., mark it so and include its parameter values.}\spc{5}
 
+\begin{align*}
+    g(x) = \ln(\frac{x}{1-x}) &\Leftrightarrow  g^{-1}(y) = \frac{\exp{y}}{1 + \exp{y}} \\ \\ 
+    \abss{\derivop{y}{g^{-1}(y)}} &= \abss{\frac{\exp{y}}{(1 + \exp{y})^2}} \\ \\ 
+    f_x(g^{-1}(y)) \abss{\derivop{y}{g^{-1}(y)}} &= \frac{\exp{y}}{(1 + \exp{y})^2} \\ \\
+    &= \frac{\exp{y}}{(1 + \exp{y})^2} \frac{\exp{-2y}}{\exp{-2y}} \\ \\ 
+    &= \frac{\exp{-y}}{(\exp{-y} + 1)^2} \\ \\ 
+    &\sim \logistic{0}{1}
+\end{align*}
+
 
 \easysubproblem{Find the Quantile function of $X$ where $X \sim \text{Logistic}(0, 1)$.}\spc{3}
 
+\begin{align*}
+    F(x) &= \frac{\exp{x}}{1 + \exp{x}} \\ \\ 
+    Q[X, p] &= \ln(\frac{p}{1-p}) 
+\end{align*}
+
 \easysubproblem{Find the PDF of $Y = \sigma X + \mu \sim \text{Logistic}(\mu, \sigma)$ where $X \sim \text{Logistic}(0, 1)$.}\spc{3}
+
+\begin{align*}
+    g(x) = \sigma X + \mu  &\Leftrightarrow  g^{-1}(y) =  \frac{y - \mu}{\sigma}\\ \\
+    \abss{\derivop{y}{g^{-1}(y)}} &= \frac{1}{\abss{\sigma}} \\ \\ 
+    f_x(g^{-1}(y)) \abss{\derivop{y}{g^{-1}(y)}} &= \frac{\exp{\frac{y - \mu}{\sigma}}}{\sigma (1 + \exp{\frac{y - \mu}{\sigma}})^2} \\ \\ 
+    &= \frac{\exp{\frac{y - \mu}{\sigma}}}{\sigma (1 + \exp{\frac{y - \mu}{\sigma}})^2} \frac{\exp{-2y}}{\exp{-2y}} \\ \\ 
+    &= \frac{\exp{-(\frac{y - \mu}{\sigma})}}{\sigma (1 + \exp{-(\frac{y - \mu}{\sigma})})^2}
+\end{align*} 
 
 \hardsubproblem{Let $X \sim \text{Logistic}(0,1)$. Find the PDF of $Y = g(X) = \oneover{1 + e^{-X}}$. If this is a brand name r.v., mark it so and include its parameter values.}\spc{5}
 
@@ -444,6 +482,12 @@ single point.
 
 \intermediatesubproblem{Express $\binom{n}{k}$ in terms of the beta function.}\spc{5}
 
+\begin{align*}
+    \binom{n}{k} &= \frac{n!}{k!(n-k)!} \\ \\ 
+    &= \frac{\Gammaf{n+1}}{\Gammaf{k+1} \Gammaf{n-k+1}} \\  \\ 
+    &= \frac{1}{n+1} \frac{\Gammaf{n+2}}{\Gammaf{k+1} \Gammaf{n-k+1}} \\ \\ 
+    &= \frac{1}{(n+2)B(k+1, n-k+1)}
+\end{align*}
 
 \extracreditsubproblem{If $\Xoneton \iid \uniform{a}{b}$, show that $X_{(k)}$ is a linear transformation of the beta distribution and find its parameters.}\spc{8}
 
