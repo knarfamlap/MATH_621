@@ -187,6 +187,12 @@ $g(x)$ is not monotonic but it does not matter since the $Supp[X] = \{0, n\}$
 
 \hardsubproblem{Let $X \sim \binomial{n}{p}$ where $n$ is an even number. Find the PMF of $Y = g(X) = \text{mod}(X, 2)$ where \qu{mod} denotes modulus division of the first argument by the second argument.}\spc{5}
 
+Since $n$ is even then, 
+\begin{align*}
+    g(X) &= \text{mod}(X, 2) = 0  \\ \\ 
+    P_X(g^{-1}(y)) &= P_X(0) = (1-p)^n
+\end{align*}
+
 \hardsubproblem{[MA] Let $X \sim \negbin{k}{p}$. Find the PMF of $Y = g(X) = \text{mod}(X, n)$ where $n \in \naturals$.}\spc{7}
 \end{enumerate}
 
@@ -247,6 +253,13 @@ $g(x)$ is not monotonic but it does not matter since the $Supp[X] = \{0, n\}$
 
 \hardsubproblem{Let $X \sim \text{Logistic}(0,1)$. Find the PDF of $Y = g(X) = \oneover{1 + e^{-X}}$. If this is a brand name r.v., mark it so and include its parameter values.}\spc{5}
 
+\begin{align*}
+    g(x) =  \oneover{1 + e^{-x}} &\Leftrightarrow  g^{-1}(y) =  -\ln(\frac{1-y}{y})\\ \\ 
+    \abss{\derivop{y}{g^{-1}(y)}} &= \oneover{y(1-y)} \\ \\ 
+    f_x(g^{-1}(y)) \abss{\derivop{y}{g^{-1}(y)}} &= \frac{\lambda}{y(1-y)} (\frac{y}{(1-y)})^{-\lambda} \\ \\ 
+    &\sim \text{ParetoI}(1-y, \lambda)
+\end{align*}
+
 \intermediatesubproblem{Let $X \sim \exponential{\lambda}$. Find the PDF of $Y = g(X) = ke^X$ where $k>0$. This will be a brand name r.v., so mark it so and include its parameter values.}\spc{6}
 
 \begin{align*}
@@ -281,11 +294,15 @@ Since $X_1, X_2 \iid \exponential{\lambda}$
 \easysubproblem{Find the PDF of $Y = \sigma X + \mu \sim \text{Laplace}(\mu, \sigma)$ where $X \sim \text{Laplace}(0, 1)$.}\spc{3}
 
 \begin{align*}
-    f(\sigma x + \mu) = \frac{1}{2} \exp{-\abss{\frac{y - \mu}{\sigma}}} 
+    f(\sigma x + \mu) = \frac{1}{2 \sigma} \exp{-\abss{\frac{y - \mu}{\sigma}}} 
 \end{align*}
 
 \hardsubproblem{Show that $\mathcal{E} \sim \text{Laplace}(0, \sigma)$ is a reasonable error distribution.}\spc{4}
 
+$\mathcal{E}$ is a reasonable error distribution because it has thin tails at it extremes. Meaning that it is less mass at the ends and its symmetric
+\begin{align*}
+    P(X) = \frac{1}{2\sigma} \exp{-\frac{\abss{y}}{\sigma}}
+\end{align*}
 
 \intermediatesubproblem{[MA] Find the Quantile function of $X$ where $X \sim \text{Laplace}(0, 1)$.}\spc{4}
 
@@ -296,11 +313,11 @@ Since $X_1, X_2 \iid \exponential{\lambda}$
     \end{cases} &=
     \begin{cases}
         q = \frac{1}{2} \exp{x}  ~~ q \leq \frac{1}{2}\\ \\ 
-        1 = 1 - \frac{1}{2} \exp{-x}   q \geq \frac{1}{2} 
+        1 = 1 - \frac{1}{2} \exp{-x} ~~  q \geq \frac{1}{2} 
     \end{cases} \\ \\ 
    Q[X, q] &= \begin{cases}
         \ln(2q) = x ~~ q \leq \frac{1}{2}\\ \\
-        \ln(-2q + 2) = x q \geq \frac{1}{2}
+        \ln(-2q + 2) = x ~~ q \geq \frac{1}{2}
     \end{cases}
 \end{align*}
 
@@ -309,6 +326,13 @@ Since $X_1, X_2 \iid \exponential{\lambda}$
 %\intermediatesubproblem{Is $X \sim \text{ParetoI}(1, log_4(5))$ a good model for land ownership amount for individuals? Why / why not?}\spc{4}
 
 \hardsubproblem{[MA] Let $X \sim \text{ParetoI}(k, \lambda)$. Show that $Y = X~|~X > c$ where $c > k$ is also a ParetoI r.v. and find its parameter values.}\spc{7}
+
+\begin{align*}
+    P(X > y | X > c) &= \frac{1 - F(y)}{1 - F(c)} \\ \\ 
+    &= \frac{((\frac{\lambda}{k}) (\frac{k}{y})^{\lambda})}{ (\frac{\lambda}{k}) (\frac{k}{c})^{\lambda}} \\ \\ 
+    &= (\frac{c}{y})^{\lambda} \\ \\ 
+    &\sim \text{ParetoI}(c, \lambda)
+\end{align*}
 
 %\extracreditsubproblem{[MA] Prove or disprove that considering any ParetoI conditional on being larger than a certain value would also be a power rule where the top $q$ proportion of the unit modeled is in the hands of the top $\bar{q} := 1 - q$ values of the unit. 
 %
@@ -346,6 +370,14 @@ Since $X_1, X_2 \iid \exponential{\lambda}$
 \end{align*}
 
 \easysubproblem{[MA] Show that for any r.v. $X$, if $Y = aX + b$, then $F_Y(y) = F_X\parens{\frac{y - b}{a}}$.}\spc{2}
+
+\begin{align*}
+    F_Y(y) &= P(Y \leq y) \\ \\ 
+    &= P(F_X(X) \leq y) \\ \\
+    &= P(X \leq F_X(y^{-1})) \\ \\ 
+    &= F_X(y^{-1}) = F_X(\frac{y-b}{a})
+\end{align*}
+
 
 \easysubproblem{Using the answer in the previous question, find the CDF of $G \sim \text{Gumbel}(\mu, \beta)$.}\spc{4}
 
@@ -692,6 +724,24 @@ Let $r = Y_1$ and $u = Y _2$, then we have
 
 
 \hardsubproblem{Find the simplest formula you can for the PDF of $Q = \frac{X_1}{X_2}e^{X_3}$ where $X_1, X_2, X_3$ are dependent r.v.'s.}\spc{10}
+
+\begin{align*}
+    \begin{cases}
+        X_1 = \frac{Y_1Y_2}{\exp{Y_3}} \\ 
+        X_2 = Y_2 \\ 
+        X_3 = \ln( Y_3)
+    \end{cases}
+    &\Leftrightarrow~
+    \begin{cases}
+        Y_1 = \frac{X_1}{X_2} \exp{X_3} \\
+        Y_2 = X_2 \\ 
+        Y_3 = \exp{X_3} 
+    \end{cases} \\ \\ 
+    \abss{J_n(\vec{y})} &= \frac{Y_2}{\exp{Y_3} Y_3} \\ \\ 
+    f_Q(y) &= \int_{\reals} \int_{\reals} f_y(y_1, y_2, y_3) ~ dy_2 dy_3 \\ \\
+    &= \int_{\reals} \int_{\reals} f(\frac{uv}{\exp{w}}, v, \ln(w)) ~dv dw
+\end{align*}
+
 
 \hardsubproblem{Show that $R = \frac{X_1}{X_2} \sim \beta'(\alpha, \beta)$, the beta prime distribution, if $X_1 \sim \gammadist{\alpha}{1}$ independent of $X_2 \sim \gammadist{\beta}{1}$.}\spc{12}
 
